@@ -1,15 +1,15 @@
 package sample;
 
-import javafx.application.*;
-import javafx.geometry.Pos;
-import javafx.scene.*;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
-import javafx.stage.*;
-import javafx.collections.*;
+ import javafx.application.*;
+ import javafx.geometry.Pos;
+ import javafx.scene.*;
+ import javafx.scene.control.*;
+ import javafx.scene.layout.*;
+ import javafx.stage.*;
+ import javafx.collections.*;
 
-public class Framework extends Application {
-
+public class Main extends Application {
+    public static int i = 0;
     private Stage window;
     private Scene s1, s2, s3;
 
@@ -30,6 +30,11 @@ public class Framework extends Application {
         Button b2 = new Button("Jeopardy Board");
         b2.setOnAction(e -> window.setScene(s3));
         b2.setPrefSize(250,250);
+
+        //button 3
+        Button b3 = new Button("Make test");
+        b3.setOnAction(e -> System.out.println("hi"));
+
 
         //return button
         Button ret = new Button("Return");
@@ -52,35 +57,60 @@ public class Framework extends Application {
 
         ObservableList<String> temp = list1.getSelectionModel().getSelectedItems();
 
+        //List for difficulty
+        ChoiceBox<String> choiceBox = new ChoiceBox<>();
 
+        choiceBox.getItems().addAll("Normal","Hard","Turbo Multi Extra");
+        choiceBox.setValue("Normal");
 
         ///sub_layouts
         //transfer selected
-            Button move = new Button(">");
-            move.setOnAction(e -> {
-                selected.addAll(temp);
 
-            });
+        Button move = new Button(">");
+        move.setOnAction(e -> {
+            selected.addAll(temp);
+            i++;
 
-            Button back = new Button("<");
-            back.setOnAction(e -> {
+
+
+        });
+
+        Button back = new Button("<");
+        back.setOnAction(e -> {
+            if(i <= 0){
+                System.out.println("Empty List");
+            }
+            else{
                 selected.remove(0);
+                i--;
+            }
 
 
-            });
+        });
 
-            VBox cen_but = new VBox();
-            cen_but.setAlignment(Pos.CENTER);
-            cen_but.getChildren().addAll(move,back);
+        VBox cen_but = new VBox();
+        cen_but.setAlignment(Pos.CENTER);
+        cen_but.getChildren().addAll(move,back);
 
-            //sub 2
+        //sub 2
 
-            ComboBox<String> c1 = new ComboBox();
-            HBox h1 = new HBox();
-            h1.setAlignment(Pos.TOP_LEFT);
-            h1.getChildren().add(c1);
+        ComboBox<String> c1 = new ComboBox();
+        HBox h1 = new HBox();
+        h1.setAlignment(Pos.TOP_CENTER);
+        h1.getChildren().addAll(c1, choiceBox);
 
-            //sub 3
+        //sub 3
+
+        HBox h2 = new HBox();
+        h2.setAlignment(Pos.CENTER);
+        h2.getChildren().addAll(ret,b3);
+
+        Label label1 = new Label("Test Name:");
+        TextField textField = new TextField ();
+        h2.getChildren().addAll(label1,textField);
+
+
+
 
 
 
@@ -88,10 +118,10 @@ public class Framework extends Application {
         BorderPane l2 = new BorderPane();
         l2.setLeft(list1);
         l2.setRight(list2);
-        l2.setBottom(ret);
+        l2.setBottom(h2);
         l2.setCenter(cen_but);
         l2.setTop(h1);
-        s2 = new Scene(l2, 500,250);
+        s2 = new Scene(l2, 600,300);
 
 
         window.setScene(s1);
