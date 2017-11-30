@@ -1,12 +1,19 @@
+/*
+   Team 4: Jonathan Miller, Bryan Long, Robert Redus
+   11/30/17
+*/
+
+
 package sample;
 
- import javafx.application.*;
- import javafx.geometry.Pos;
- import javafx.scene.*;
- import javafx.scene.control.*;
- import javafx.scene.layout.*;
- import javafx.stage.*;
- import javafx.collections.*;
+import javafx.application.*; 
+import javafx.geometry.Pos;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.stage.*;
+import javafx.collections.*;
+import JeopardyBoard;
 
 public class Main extends Application {
     public static int i = 0;
