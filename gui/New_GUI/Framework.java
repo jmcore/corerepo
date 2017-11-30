@@ -28,7 +28,7 @@ public class Main extends Application {
 
         //button 2
         Button b2 = new Button("Jeopardy Board");
-        b2.setOnAction(e -> window.setScene(s3));
+        b2.setOnAction(e -> JeopardyBoard());
         b2.setPrefSize(250,250);
 
         //button 3
