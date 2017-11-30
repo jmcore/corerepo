@@ -21,10 +21,7 @@ public class JeopardyBoard {
     private String cssName;
     private String answerName;
     private String questionName;
-    private String arr[][] = new String[5][6];
-    
-    
-   
+	
     /**
     * constructor. 
     * @throws IOException 
